@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -41,7 +42,16 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(MainAdapter.ViewHolder viewHolder, int position) {
-        viewHolder.mTextView.setText(mDataset.get(position));
+        final String item = mDataset.get(position);
+
+        viewHolder.mTextView.setText(item);
+
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(v.getContext(), item, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
